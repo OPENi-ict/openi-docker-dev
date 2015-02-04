@@ -6,7 +6,7 @@ MAINTAINER Aiden Keating <akeating@tssg.org>
 EXPOSE 80 443
 
 RUN sudo apt-get -y install librrd-dev python libsqlite3-dev sqlite3 \
-    build-essential uuid-dev && mkdir repos
+    build-essential uuid-dev rrdtool tmux nano && mkdir repos && npm install html-to-text
 
 WORKDIR /repos/
 
@@ -48,6 +48,4 @@ RUN cd /repos/ && git clone https://github.com/OPENi-ict/type-api.git && \
 RUN cd /repos/ && wget https://github.com/zedshaw/mongrel2/releases/download/v1.9.1/mongrel2-v1.9.1.tar.gz && \
     tar -zxvf mongrel2-v1.9.1.tar.gz && cd  mongrel2-v1.9.1 && make install && \
     cd / && git clone https://github.com/OPENi-ict/mongrel2.git
-
-RUN npm install html-to-text && apt-get install -y rrdtool tmux nano
 
