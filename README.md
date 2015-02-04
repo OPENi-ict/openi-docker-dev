@@ -43,9 +43,9 @@ docker build -t openiicteu/dev .
 
 #### Docker Hub
 
-First pull the project, there are two versions
-openiicteu/dev:flat   ~800MB
-openiicteu/dev:latest ~1GB
+First pull the project, there are two versions:
+- openiicteu/dev:flat   ~800MB
+- openiicteu/dev:latest ~1GB
 
 ```bash
 docker pull openiicteu/dev:<your version>
@@ -67,6 +67,7 @@ sh run_platform.sh
 ```
 
 You can detach from the container with Ctrl+P+Q
+CTRL+C will stop the container completely.
 You can reattach to the container with
 
 ```bash
