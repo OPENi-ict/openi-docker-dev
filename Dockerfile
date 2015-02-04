@@ -45,7 +45,7 @@ RUN cd /repos/ && git clone https://github.com/OPENi-ict/swagger-def.git && \
 RUN cd /repos/ && git clone https://github.com/OPENi-ict/type-api.git && \
     cd type-api/ && npm install
 
-RUN cd /repos/ && wget https://github.com/zedshaw/mongrel2/releases/download/v1.9.1/mongrel2-v1.9.1.tar.gz && \
+RUN wget https://github.com/zedshaw/mongrel2/releases/download/v1.9.1/mongrel2-v1.9.1.tar.gz && \
     tar -zxvf mongrel2-v1.9.1.tar.gz && cd  mongrel2-v1.9.1 && make install && \
-    cd / && git clone https://github.com/OPENi-ict/mongrel2.git
+    cd /repos/ && git clone https://github.com/OPENi-ict/mongrel2.git
 
