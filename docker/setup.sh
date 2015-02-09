@@ -1,0 +1,1 @@
+function npm() { builtin npm --prefix /opt/openi/ "$@"; }

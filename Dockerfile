@@ -5,50 +5,53 @@ MAINTAINER Aiden Keating <akeating@tssg.org>
 
 EXPOSE 80 443
 
-RUN sudo apt-get -y install librrd-dev python libsqlite3-dev sqlite3 \
-    build-essential uuid-dev
+RUN apt-get update -q && apt-get install -y librrd-dev python libsqlite3-dev sqlite3 build-essential uuid-dev rrdtool tmux nano python-pip \
+libpq-dev python-dev openjdk-7-jdk maven libjansi-java libscrypt-dev curl python-pip
 
-RUN git clone https://github.com/OPENi-ict/attachment-api.git && \
-    cd  attachment-api/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/auth-api.git && \
-    cd auth-api/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/cloudlet-api.git && \
-    cd cloudlet-api/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/communications.git && \
-    cd communications/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/dao.git && \
-    cd dao/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/notifications.git && \
-    cd notifications/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/object-api.git && \
-    cd object-api/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/permissions_api.git && \
-    cd permissions_api/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/search_api.git && \
-    cd search_api/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/swagger-def.git && \
-    cd swagger-def/ && npm install
-
-RUN git clone https://github.com/OPENi-ict/type-api.git && \
-    cd type-api/ && npm install
 
 RUN wget https://github.com/zedshaw/mongrel2/releases/download/v1.9.1/mongrel2-v1.9.1.tar.gz && \
-    tar -zxvf mongrel2-v1.9.1.tar.gz && cd  mongrel2-v1.9.1 && make install && \
-    cd / && git clone https://github.com/OPENi-ict/mongrel2.git
+    tar -zxvf mongrel2-v1.9.1.tar.gz && cd  mongrel2-v1.9.1 && make install
 
-RUN apt-get purge -y librrd-dev python gcc && \
-    apt-get autoclean && \
-    apt-get autoremove -y && \
-    npm install html-to-text && apt-get install -y rrdtool tmux nano
+RUN mkdir -p /opt/openi/ && npm install --prefix /opt/openi/ OPENi-ict/m2nodehandler  &&  \
+    npm install --prefix /opt/openi/ jsonwebtoken@3.2.0       &&  \
+    npm install --prefix /opt/openi/ OPENi-ict/openi_rrd      &&  \
+    npm install --prefix /opt/openi/ OPENi-ict/dbc      &&  \
+    npm install --prefix /opt/openi/ elasticsearch@^2.3.0      &&  \
+    npm install --prefix /opt/openi/ OPENi-ict/loglet      &&  \
+    npm install --prefix /opt/openi/ moment      &&  \
+    npm install --prefix /opt/openi/ OPENi-ict/cloudlet-utils      &&  \
+    npm install --prefix /opt/openi/ OPENi-ict/openi-logger      &&  \
+    npm install --prefix /opt/openi/ underscore@^1.6.0      &&  \
+    npm install --prefix /opt/openi/ validator      &&  \
+    npm install --prefix /opt/openi/ OPENi-ict/dbc      &&  \
+    npm install --prefix /opt/openi/ uuid      &&  \
+    npm install --prefix /opt/openi/ scrypt      &&  \
+    npm install --prefix /opt/openi/ grunt@^0.4.5      &&  \
+    npm install --prefix /opt/openi/ grunt-contrib-jshint@^0.10.0      &&  \
+    npm install --prefix /opt/openi/ jshint-stylish@^1.0.0      &&  \
+    npm install --prefix /opt/openi/ elasticsearch@^2.3.0      &&  \
+    npm install --prefix /opt/openi/ underscore@^1.6.0      &&  \
+    npm install --prefix /opt/openi/ Orion98MC/node_rrd      &&  \
+    npm install --prefix /opt/openi/ async      &&  \
+    npm install --prefix /opt/openi/ winston      &&  \
+    npm install --prefix /opt/openi/ body-parser      &&  \
+    npm install --prefix /opt/openi/ cookie-parser      &&  \
+    npm install --prefix /opt/openi/ debug@~2.1.1      &&  \
+    npm install --prefix /opt/openi/ ejs@~2.1.4      &&  \
+    npm install --prefix /opt/openi/ express      &&  \
+    npm install --prefix /opt/openi/ express-session      &&  \
+    npm install --prefix /opt/openi/ jwt-simple      &&  \
+    npm install --prefix /opt/openi/ morgan      &&  \
+    npm install --prefix /opt/openi/ serve-favicon      &&  \
+    npm install --prefix /opt/openi/ zmq@~2.5.1      &&  \
+    npm install --prefix /opt/openi/ couchbase@1.2.4      &&  \
+    npm install --prefix /opt/openi/ http-status      &&  \
+    npm install --prefix /opt/openi/ gcm               &&  \
+    npm install --prefix /opt/openi/ lazy.js         &&  \
+    npm install --prefix /opt/openi/ dropbox
 
-ADD run_platform.sh /
+ADD utils          /opt/openi/utils
+ADD provision      /opt/openi/provision
+ADD docker         /opt/openi/docker
 
+RUN mkdir -p /opt/openi/repos && mkdir -p /opt/openi/repos/openi_rrd
