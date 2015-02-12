@@ -6,7 +6,7 @@ MAINTAINER Aiden Keating <akeating@tssg.org>
 EXPOSE 80 443
 
 RUN apt-get update -q && apt-get install -y librrd-dev python libsqlite3-dev sqlite3 build-essential uuid-dev rrdtool tmux nano python-pip \
-libpq-dev python-dev openjdk-7-jdk maven libjansi-java libscrypt-dev curl python-pip
+libpq-dev python-dev openjdk-7-jdk maven libjansi-java libscrypt-dev curl python-pip nmap
 
 
 RUN wget https://github.com/zedshaw/mongrel2/releases/download/v1.9.1/mongrel2-v1.9.1.tar.gz && \
@@ -44,7 +44,7 @@ RUN mkdir -p /opt/openi/ && npm install --prefix /opt/openi/ OPENi-ict/m2nodehan
     npm install --prefix /opt/openi/ morgan      &&  \
     npm install --prefix /opt/openi/ serve-favicon      &&  \
     npm install --prefix /opt/openi/ zmq@~2.5.1      &&  \
-    npm install --prefix /opt/openi/ couchbase@1.2.4      &&  \
+    npm install --prefix /opt/openi/ couchbase@2.0.1      &&  \
     npm install --prefix /opt/openi/ http-status      &&  \
     npm install --prefix /opt/openi/ gcm               &&  \
     npm install --prefix /opt/openi/ lazy.js         &&  \

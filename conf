@@ -1,2 +1,3 @@
 HOST_DIR=/Users/dmccarthy/work/openi/wp4_new
+COUCHBASE_DATA_DIR=/Users/dmccarthy/work/openi/couchbase_data
 UPLOAD_DIR=/Users/dmccarthy/work/openi/wp4/uploads
