@@ -1,5 +1,3 @@
-# This file creates a Docker image containing the cloudlet platform
-
 FROM openiicteu/cloudlet_core 
 MAINTAINER Aiden Keating <akeating@tssg.org>
 
@@ -47,5 +45,4 @@ RUN cd /repos/ && git clone https://github.com/OPENi-ict/type-api.git && \
 
 RUN wget https://github.com/zedshaw/mongrel2/releases/download/v1.9.1/mongrel2-v1.9.1.tar.gz && \
     tar -zxvf mongrel2-v1.9.1.tar.gz && cd  mongrel2-v1.9.1 && make install && \
-    cd /repos/ && git clone https://github.com/OPENi-ict/mongrel2.git
-
+    cd /repos/ && git clone https://github.com/OPENi-ict/mongrel2.git 
