@@ -3,7 +3,7 @@
 FROM ubuntu:14.04
 MAINTAINER Aiden Keating <akeating@tssg.org>
 
-EXPOSE 11210 8091 8092 9091
+EXPOSE 11210 8091 8092
 
 # Some of those installed programs will not be needed
 RUN apt-get update && apt-get install -y openssh-server supervisor librtmp0 python-httplib2 xdotool wget software-properties-common python-software-properties && \
