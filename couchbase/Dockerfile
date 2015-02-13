@@ -6,10 +6,9 @@ MAINTAINER Aiden Keating <akeating@tssg.org>
 EXPOSE 11210 8091 8092
 
 # Some of those installed programs will not be needed
-RUN apt-get update && apt-get install -y librtmp0 python-httplib2 wget software-properties-common python-software-properties && \
+RUN apt-get update && apt-get install -y openssh-server supervisor librtmp0 python-httplib2 xdotool wget software-properties-common python-software-properties && \
     wget --quiet http://packages.couchbase.com/releases/3.0.0/couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb && \
     dpkg -i couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb
-
 
 RUN service couchbase-server start && \
     /bin/sleep 20 && \
@@ -24,14 +23,12 @@ RUN service couchbase-server start && \
 
 
 ADD bin/couchbase-script /usr/local/sbin/couchbase
-RUN chmod 755 /usr/local/sbin/couchbase
+RUN chmod 755 /usr/local/sbin/couchbase && chmod -R 755 /opt/couchbase/var
 
 CMD /usr/local/sbin/couchbase
 
 
-# May need to run service couchbase-server start on login
-
-
+#ENTRYPOINT /bin/bash
     
 
 

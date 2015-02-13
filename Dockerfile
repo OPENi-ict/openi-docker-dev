@@ -1,5 +1,3 @@
-# This file creates a Docker image containing the cloudlet platform
-
 FROM openiicteu/cloudlet_core 
 MAINTAINER Aiden Keating <akeating@tssg.org>
 
@@ -10,7 +8,7 @@ libpq-dev python-dev openjdk-7-jdk maven libjansi-java libscrypt-dev curl python
 
 
 RUN wget https://github.com/zedshaw/mongrel2/releases/download/v1.9.1/mongrel2-v1.9.1.tar.gz && \
-    tar -zxvf mongrel2-v1.9.1.tar.gz && cd  mongrel2-v1.9.1 && make install
+tar -zxvf mongrel2-v1.9.1.tar.gz && cd  mongrel2-v1.9.1 && make install
 
 RUN mkdir -p /opt/openi/ && npm install --prefix /opt/openi/ OPENi-ict/m2nodehandler  &&  \
     npm install --prefix /opt/openi/ jsonwebtoken@3.2.0       &&  \

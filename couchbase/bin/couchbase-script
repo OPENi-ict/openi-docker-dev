@@ -3,7 +3,7 @@
 # File: couchbase-script — Couchbase Server Docker startup script
 # based on work by Dustin Sallings: https://gist.github.com/dustin/6605182
 
-CB_ADMIN="Administrator"
+CB_ADMIN="admin"
 CB_ADMIN_PASSWORD="couchbase"
 CB_BUCKET="default"
 CB_CLI="/opt/couchbase/bin/couchbase-cli"
@@ -52,10 +52,10 @@ else
 
     untilsuccess $CB_CLI cluster-init \
       -c 127.0.0.1:8091 --cluster-init-username=$CB_ADMIN \
-      --cluster-init-password=$CB_ADMIN_PASSWORD --cluster-init-ramsize=512
+      --cluster-init-password=$CB_ADMIN_PASSWORD --user=$CB_ADMIN -p $CB_ADMIN_PASSWORD --cluster-init-ramsize=512
 
     untilsuccess $CB_CLI bucket-create -c $CB_HOST:8091 \
-      -u $CB_ADMIN -p $CB_ADMIN_PASSWORD --bucket=default -c $CB_HOST:8091 \
+      -u $CB_ADMIN -p $CB_ADMIN_PASSWORD --user=$CB_ADMIN --bucket=default -c $CB_HOST:8091 \
       --bucket-ramsize=128
 fi
 
